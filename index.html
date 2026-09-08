@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Unlimited TTS</title>
+  <script>
+    (function() {
+      var isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Ko-fi Overlay Widget Script -->
+  <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        if (typeof kofiWidgetOverlay !== 'undefined') {
+          try {
+            kofiWidgetOverlay.draw('alex2620', {
+              'type': 'floating-chat',
+              'floating-chat.donateButton.text': 'Donate',
+              'floating-chat.donateButton.background-color': '#9fe870',
+              'floating-chat.donateButton.text-color': '#0e0f0c'
+            });
+          } catch (_) {}
+        }
+      }, 150);
+    });
+  </script>
+</head>
+<body class="preload">
+
+  <!-- Main Workspace -->
+  <main class="main-canvas">
+    <div class="tool-container">
+      <section class="card-content synth-card">
+
+        <!-- Card Top Header -->
+        <div class="card-header-row">
+          <div class="brand">
+            <span class="brand-badge">FREE</span>
+            <span class="brand-title">Unlimited TTS</span>
+          </div>
+          <div class="header-tools">
+            <a href="https://formsubmit.co/el/daraco" target="_blank" rel="noopener noreferrer" class="btn-tool btn-feedback-trigger" id="btn-open-feedback-modal" title="Send Feedback">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Feedback
+            </a>
+          </div>
+        </div>
+
+  <!-- Textarea Box with Integrated Action Bar -->
+        <div class="input-wrapper">
+          <textarea 
+            id="text-input" 
+            class="text-area-box" 
+            rows="6" 
+            maxlength="5000"
+            placeholder="Type or paste your text here..."></textarea>
+          
+          <!-- Integrated Action Bar: Example Chips on Left, Tools & Counter on Right -->
+          <div class="text-actions-bar">
+            <div class="samples-scroll">
+              <button type="button" class="chip-sample" data-text="In a world where shadows rule the night, one warrior rises against all odds to claim the dawn.">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                Cinematic Trailer
+              </button>
+              <button type="button" class="chip-sample" data-text="Look at me! I gave you everything I had, every single piece of my soul... and you just walked away!">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Emotional Drama
+              </button>
+              <button type="button" class="chip-sample" data-text="No way! Are you seriously telling me they pulled that off live on stage? That is absolutely insane!">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                Hyped Podcast
+              </button>
+            </div>
+
+            <div class="text-tools-right">
+              <button type="button" class="btn-tool" id="btn-paste" title="Paste text">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                Paste
+              </button>
+              <button type="button" class="btn-tool hidden" id="btn-clear" title="Clear text">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Clear
+              </button>
+              <span id="char-counter" class="char-counter">0 / 5000 chars</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Row: Voice Picker & Speed Dropdown -->
+        <div class="synth-controls-row">
+          
+          <!-- Voice Picker Trigger Button -->
+          <div class="control-block">
+            <span class="control-label">Voice</span>
+            <button type="button" id="btn-open-voice-modal" class="voice-picker-btn">
+              <img id="active-voice-img" class="voice-picker-img" src="" alt="Voice avatar">
+              <div class="voice-picker-text">
+                <span id="active-voice-name" class="picker-name">Kit</span>
+                <span id="active-voice-meta" class="picker-meta">British &bull; Male</span>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="picker-chevron"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/></svg>
+            </button>
+          </div>
+
+          <!-- Speed Custom Dropdown Menu ("Natural" label) -->
+          <div class="control-block">
+            <span class="control-label">Speed</span>
+            <div class="custom-dropdown-container">
+              <button type="button" id="btn-speed-trigger" class="custom-dropdown-trigger">
+                <span id="speed-display-label">1.0x — Natural</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="dropdown-chevron"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div id="speed-menu" class="custom-dropdown-menu hidden">
+                <button type="button" class="dropdown-item" data-speed="0.5">0.5x — Very Slow</button>
+                <button type="button" class="dropdown-item" data-speed="0.75">0.75x — Slow</button>
+                <button type="button" class="dropdown-item active" data-speed="1.0">1.0x — Natural</button>
+                <button type="button" class="dropdown-item" data-speed="1.2">1.2x — Fast</button>
+                <button type="button" class="dropdown-item" data-speed="1.4">1.4x — Faster</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action CTA Button -->
+        <div class="action-footer">
+          <button type="button" id="btn-generate" class="button-primary btn-cta">
+            <svg id="icon-generate-play" class="btn-play-svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span id="btn-generate-text">Say It</span>
+          </button>
+        </div>
+
+        <!-- Main Audio Output Player Card (White Background, Full Pill Shape) -->
+        <div id="player-container" class="player-container hidden">
+
+          <!-- Skeleton Loading Card -->
+          <div id="player-card-skeleton" class="player-card pill-shape skeleton-card hidden">
+            <div class="player-top">
+              <div class="player-title-row">
+                <div class="skeleton-avatar skeleton-box"></div>
+                <div class="skeleton-text-group">
+                  <div class="skeleton-line short skeleton-box"></div>
+                  <div class="skeleton-line long skeleton-box"></div>
+                </div>
+              </div>
+              <div class="skeleton-btn skeleton-box"></div>
+            </div>
+            <div class="custom-audio-bar skeleton-bar">
+              <div class="skeleton-circle skeleton-box"></div>
+              <div class="skeleton-timeline skeleton-box"></div>
+            </div>
+          </div>
+
+          <!-- Actual Player Card Body -->
+          <div id="player-card-body" class="player-card pill-shape">
+            <div class="player-top">
+              
+              <!-- Left Side: Voice Avatar, Voice Name, Title & Info Icon -->
+              <div class="player-title-row">
+                <img id="player-voice-img" class="player-voice-avatar" src="" alt="Voice avatar">
+                <div class="player-voice-details">
+                  <span id="player-voice-name-label" class="player-voice-name">Kit</span>
+                  <span class="player-title" id="player-first-words">Generated Audio</span>
+                </div>
+                
+                <div class="info-popover-wrapper">
+                  <button type="button" id="btn-player-info" class="btn-info-icon" title="Audio Info">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                  <div id="player-info-popover" class="info-popover-card hidden">
+                    <div class="popover-line"><strong>Voice:</strong> <span id="info-voice-name">Kit (British Male)</span></div>
+                    <div class="popover-line"><strong>Speed:</strong> <span id="info-speed">1.0x</span></div>
+                    <div class="popover-line"><strong>Size:</strong> <span id="info-size">48 KB</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Side: Download Dropdown -->
+              <div class="custom-dropdown-container fit-content">
+                <button type="button" id="btn-dl-menu-trigger" class="button-secondary btn-dl-trigger">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="dl-menu" class="custom-dropdown-menu right-aligned compact-menu hidden">
+                  <button type="button" id="dl-option-mp3" class="dropdown-item">Download MP3</button>
+                  <button type="button" id="dl-option-wav" class="dropdown-item">Download WAV</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Custom Audio Controller Bar -->
+            <div class="custom-audio-bar">
+              <button type="button" id="btn-play-pause" class="button-icon-circular btn-player-toggle" title="Play / Pause">
+                <svg id="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <svg id="icon-pause" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </button>
+
+              <div class="scrubber-wrapper">
+                <div class="scrubber-timeline" id="scrubber-timeline">
+                  <div class="scrubber-fill" id="scrubber-fill"></div>
+                </div>
+                <div class="time-display">
+                  <span id="time-current">0:00</span>
+                  <span id="time-total">0:00</span>
+                </div>
+              </div>
+            </div>
+
+            <audio id="audio-element" preload="auto" class="hidden"></audio>
+          </div>
+        </div>
+
+        <!-- Collapsible Recent History Section (Collapsed by Default) -->
+        <div id="recent-section" class="recent-section hidden">
+          <div id="recent-header-bar" class="recent-header-bar" role="button" tabindex="0">
+            <div class="recent-title-group">
+              <span class="field-label" id="recent-count-label">Recent History (0)</span>
+              <svg id="recent-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <button type="button" id="btn-clear-history" class="btn-clear-history hidden" title="Clear All History">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Clear All
+            </button>
+          </div>
+          <div id="recent-content" class="recent-content-body hidden">
+            <div class="recent-grid" id="recent-grid">
+              <!-- Dynamically populated independent cards -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Voice Selection Popup Modal ("Select a Voice") -->
+  <div id="voice-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2 class="modal-title">Select a Voice</h2>
+          <span class="voice-count-badge" id="voice-count">36 voices</span>
+        </div>
+        <button type="button" id="btn-close-voice-modal" class="btn-close-modal" title="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Search & 3 Distinct Custom Dropdown Filters -->
+      <div class="voice-search-bar">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="voice-search" class="voice-search-input" placeholder="Search voices by name or tone...">
+      </div>
+
+      <!-- 3 Distinct Custom Filter Dropdowns (Gender, Accent, Favorites) -->
+      <div class="modal-filter-dropdowns">
+        <!-- Gender Dropdown -->
+        <div class="custom-dropdown-container flex-1">
+          <button type="button" id="btn-filter-gender" class="custom-dropdown-trigger filter-trigger">
+            <span id="label-filter-gender">All Genders</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div id="menu-filter-gender" class="custom-dropdown-menu hidden">
+            <button type="button" class="dropdown-item active" data-gender="all">All Genders</button>
+            <button type="button" class="dropdown-item" data-gender="female">Female</button>
+            <button type="button" class="dropdown-item" data-gender="male">Male</button>
+          </div>
+        </div>
+
+        <!-- Accent Dropdown -->
+        <div class="custom-dropdown-container flex-1">
+          <button type="button" id="btn-filter-accent" class="custom-dropdown-trigger filter-trigger">
+            <span id="label-filter-accent">All Accents</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div id="menu-filter-accent" class="custom-dropdown-menu hidden">
+            <button type="button" class="dropdown-item active" data-accent="all">All Accents</button>
+            <button type="button" class="dropdown-item" data-accent="american">American</button>
+            <button type="button" class="dropdown-item" data-accent="british">British</button>
+            <button type="button" class="dropdown-item" data-accent="irish">Irish</button>
+            <button type="button" class="dropdown-item" data-accent="indian">Indian</button>
+          </div>
+        </div>
+
+        <!-- Standalone 1-Click Favorites Filter Chip -->
+        <button type="button" id="btn-filter-favs" class="filter-fav-chip" title="Filter Favorites">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Favorites</span>
+        </button>
+      </div>
+
+      <!-- Voice Roster with Star Favorites & Human Avatars -->
+      <div class="modal-voice-list" id="voice-list">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
