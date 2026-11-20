@@ -1,0 +1,37 @@
+{
+  "s1_title": {
+    "audio": "/workspace/washer-video/audio/s1_title.wav",
+    "duration": 9.44,
+    "voice": "aura-2-orion-en"
+  },
+  "s2_drums": {
+    "audio": "/workspace/washer-video/audio/s2_drums.wav",
+    "duration": 9.04,
+    "voice": "aura-2-orion-en"
+  },
+  "s3_fill": {
+    "audio": "/workspace/washer-video/audio/s3_fill.wav",
+    "duration": 7.84,
+    "voice": "aura-2-orion-en"
+  },
+  "s4_wash": {
+    "audio": "/workspace/washer-video/audio/s4_wash.wav",
+    "duration": 12.16,
+    "voice": "aura-2-orion-en"
+  },
+  "s5_drain": {
+    "audio": "/workspace/washer-video/audio/s5_drain.wav",
+    "duration": 5.4,
+    "voice": "aura-2-orion-en"
+  },
+  "s6_spin": {
+    "audio": "/workspace/washer-video/audio/s6_spin.wav",
+    "duration": 11.4,
+    "voice": "aura-2-orion-en"
+  },
+  "s7_outro": {
+    "audio": "/workspace/washer-video/audio/s7_outro.wav",
+    "duration": 8.92,
+    "voice": "aura-2-orion-en"
+  }
+}

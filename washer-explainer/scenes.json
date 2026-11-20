@@ -1,0 +1,42 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "id": "s1_title",
+      "title": "HOW IT WORKS",
+      "narration": "Deep inside every home, there is a machine that performs a small miracle, every single day. This... is how a washing machine works."
+    },
+    {
+      "id": "s2_drums",
+      "title": "THE TWO DRUMS",
+      "narration": "At its heart are two drums. A perforated inner drum, that cradles your laundry. And an outer tub, that catches every drop of water."
+    },
+    {
+      "id": "s3_fill",
+      "title": "WATER INTAKE",
+      "narration": "When the cycle begins, an inlet valve opens. Water rushes in, mixing with detergent, until the perfect level is reached."
+    },
+    {
+      "id": "s4_wash",
+      "title": "THE WASH CYCLE",
+      "narration": "Then, the wash begins. The drum tumbles the clothes back and forth, again and again, letting detergent lift away dirt, fiber by fiber."
+    },
+    {
+      "id": "s5_drain",
+      "title": "DRAIN AND RINSE",
+      "narration": "Next, the pump evacuates the dirty water, and fresh water rinses the load clean."
+    },
+    {
+      "id": "s6_spin",
+      "title": "THE SPIN CYCLE",
+      "narration": "Then comes the spin. The drum accelerates to over one thousand revolutions per minute, and centrifugal force flings the water out, through thousands of tiny holes."
+    },
+    {
+      "id": "s7_outro",
+      "title": "PERFECTLY CLEAN",
+      "narration": "From soiled, to spotless, in under an hour. That is the hidden engineering, of clean laundry."
+    }
+  ]
+}

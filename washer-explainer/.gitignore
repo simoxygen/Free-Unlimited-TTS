@@ -1,0 +1,5 @@
+.deepgram_key
+audio/mix.wav
+nohup.out
+render.log
+__pycache__/
